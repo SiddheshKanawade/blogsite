@@ -3,5 +3,5 @@
 	url = https://github.com/rhazdon/hugo-theme-hello-friend-ng.git
 [submodule "siddheshblog/public"]
 	path = siddheshblog/public
-	url = https://github.com/SiddheshKanawade/siddhesh.github.io.git
+	url = https://github.com/SiddheshKanawade/siddheshkanawade.github.io.git
 	branch = master
