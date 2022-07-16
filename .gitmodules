@@ -1,0 +1,7 @@
+[submodule "siddheshblog/themes/hello-friend-ng"]
+	path = siddheshblog/themes/hello-friend-ng
+	url = https://github.com/rhazdon/hugo-theme-hello-friend-ng.git
+[submodule "siddheshblog/public"]
+	path = siddheshblog/public
+	url = https://github.com/SiddheshKanawade/siddhesh.github.io.git
+	branch = master
