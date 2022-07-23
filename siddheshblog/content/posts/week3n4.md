@@ -3,10 +3,24 @@ title: "GSoC: Week 3 and 4"
 date: 2022-07-10T15:35:40+05:30
 ---
 
-### Tasks: ###
+## Tasks: ##
 ✅ casbin-rs/example respository maintainence \
 ✅ Add CI to axum middleware \
 ✅ Add tests and examples to axum-casbin-auth
+
+
+## Outcomes ##
+1. **casbin-rs/example:** \
+[actix-fileadapter-rbac, actix-pgsql-simple, ntex-fileadapter-acl error resolved](https://github.com/casbin-rs/examples/pull/72/commits/bd7097eae46694238750bf4abddfa9de5caf8134) \
+[ntex-fileadapter-acl build success](https://github.com/casbin-rs/examples/pull/72/commits/10069e0ddcde004c0a0916d4cf4944b8e8552fb6) \
+[actix-middleware-example](https://github.com/casbin-rs/examples/pull/72/commits/9dc325b5867cb9bfda1948abdd14bccc67f926f7) 
+
+2. **Add CI in axum middleware:** \
+[added workflow](https://github.com/casbin-rs/axum-casbin-auth/pull/1/commits/3d9b95ab9f6874373bebdff563553a6b4b8e36c5) 
+
+3. **Add tests and examples to axum-casbin-auth**: \
+[added tests/examples for axum-casbin-auth](https://github.com/casbin-rs/axum-casbin-auth/pull/1/commits/4205eace8d503288503cead976683daff7c4c3cb)
+
 
 ## Workflow ##
 ### Casbin-rs/examples ###
@@ -307,6 +321,50 @@ error[E0599]: no method named `app_data` found for struct `App` in the current s
 This is due to the version upgrade of ntex, resolve can be found [here](https://github.com/casbin-rs/examples/pull/72/files#diff-63e997272b56167db79065780451a949630a1e40df2a762b297774fd2112769dL8)
 
 #### actix-middleware-example ####
+On updating the actix-web and actix-rt versions, we get the following error:
+```error
+error[E0277]: the trait bound `CasbinActor<CachedEnforcer>: Actor` is not satisfied
+  --> actix-middleware-example/src/api/user.rs:34:22
+   |
+34 |     actor: web::Data<Addr<CasbinActor<CachedEnforcer>>>,
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Actor` is not implemented for `CasbinActor<CachedEnforcer>`
+   |
+   = help: the following other types implement trait `Actor`:
+             Mocker<T>
+             SyncArbiter<A>
+note: required by a bound in `Addr`
+  --> /Users/macbookair/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-0.11.1/src/address/mod.rs:77:20
+   |
+77 | pub struct Addr<A: Actor> {
+   |                    ^^^^^ required by this bound in `Addr`
+
+error[E0277]: the trait bound `CasbinActor<CachedEnforcer>: Actor` is not satisfied
+  --> actix-middleware-example/src/services/account_service.rs:24:22
+   |
+24 |     actor: web::Data<Addr<CasbinActor<CachedEnforcer>>>,
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Actor` is not implemented for `CasbinActor<CachedEnforcer>`
+   |
+   = help: the following other types implement trait `Actor`:
+             Mocker<T>
+             SyncArbiter<A>
+note: required by a bound in `Addr`
+  --> /Users/macbookair/.cargo/registry/src/github.com-1ecc6299db9ec823/actix-0.11.1/src/address/mod.rs:77:20
+   |
+77 | pub struct Addr<A: Actor> {
+   |                    ^^^^^ required by this bound in `Addr`
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `actix-middleware-example` due to 3 previous errors
+```
+The cargo fetches the dependency versions from the crates.io. Since the actix-casbin-auth and actix-casbin are not released in a while, hence there are two versions of some depedencies(one from actix-casbin-auth/actix-casbin and other from the Cargo.toml). Following are some examples:
+
+![Image alt](/img/week3n4/actix.png)
+
+![Image alt](/img/week3n4/actix-rt.png)
+
+![Image alt](/img/week3n4/tokio.png)
+
+Overriding the dependencies resolved the version conflicts. I encountered some errors due to upgrade in the version of the dependencies but those were resolved after refering to official documents and some github discussions. 
 
 ### CI for Axum middleware ###
 Adding CI to enable github actions was the next task after adding the core code for the Axum middleware. I had `actix-casbin-auth` for reference and following commands were included in the CI.yml
