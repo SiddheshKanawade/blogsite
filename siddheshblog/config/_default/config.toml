@@ -179,3 +179,7 @@ disableHugoGeneratorInject = false
     identifier = "blog"
     name       = "GSoC"
     url        = "posts/"
+  [[menu.main]]
+    identifier = "docblog"
+    name       = "Blog"
+    url        = "blogs/"
