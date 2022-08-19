@@ -30,7 +30,7 @@ Total Commits: **9** \
 Status: **MERGED** 
 
 #### casbin-rs/examples #### 
-1. [fix: Update dependencies, ensure build success and add axum-middleware-example](https://github.com/casbin-rs/examples/pull/72)
+1. [fix: Update dependencies, ensure build success and add axum-middleware-example](https://github.com/casbin-rs/examples/pull/72) \
 Task accomplished by this PR: \
 [X] Update dependencies to their latest version. solved [#71](https://github.com/casbin-rs/examples/pull/71) \
 [X] Both tokio and async-std features of casbin are enabled, disable one to ensure casbin compile successfully\
@@ -44,21 +44,21 @@ Total Lines of code modified: **+1,204 −76** \
 Total Commits: **19** \
 Status: **UNDER REVIEW** 
 
-2. [fix: Update tokio](https://github.com/casbin-rs/actix-casbin/pull/25)
+2. [fix: Update tokio](https://github.com/casbin-rs/actix-casbin/pull/25) 
 
 
 Total Lines of code modified: **+3 -3** \
 Total Commits: **2** \
 Status: **MERGED** 
 
-3. [fix: corrected the readme file](https://github.com/casbin-rs/actix-casbin-auth/pull/36)
+3. [fix: corrected the readme file](https://github.com/casbin-rs/actix-casbin-auth/pull/36) 
 
 Total Lines of code modified: **+2 -4** \
 Total Commits: **3** \
 Status: **MERGED**
 
 #### casbin-rs/grpc #### 
-1. [fix: Make casbin-grpc run](https://github.com/casbin-rs/casbin-grpc/pull/9)
+1. [fix: Make casbin-grpc run](https://github.com/casbin-rs/casbin-grpc/pull/9) \
 Task accomplished by this PR: \
 [X] Update prost, tonic, make new proto.rs \
 [X] Management apis, functions under `rpc_calls.rs` were not implemented \
