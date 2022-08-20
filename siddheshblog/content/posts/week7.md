@@ -1,5 +1,5 @@
 ---
-title: "GSoC: Week 7"
+title: "GSoC: Week 7[During midterm Evaluation]"
 date: 2022-07-30T01:08:39+05:30
 draft: false
 ---

@@ -1,5 +1,5 @@
 ---
-title: "GSoC: Week 10"
+title: "GSoC: Week 8"
 date: 2022-08-19T20:46:21+05:30
 ---
 
